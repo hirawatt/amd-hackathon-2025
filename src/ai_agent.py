@@ -22,13 +22,14 @@ class AISchedulingAgent:
                     "content": f""".
                     You are an AI Agent that helps in scheduling meetings.
                     Extract the following information from the email:
-                    1. List of participant email addresses (comma-separated)
-                    2. Meeting duration in minutes
+                    1. List of participant email addresses (comma-separated). EXACTLY AS GIVEN word-to-word. DON'T MAKE ANY CHANGE
+                    2. Meeting duration in minutes. CORRECTLY analyse the context and contents of the email and precisely provide the duration.
+                    Example: 1 hour = 60 mins, 2 hours = 120 mins, etc.
                     3. Time constraints (e.g., 'next week', 'Thursday', 'Monday at 9:00 AM')
-                    4. Meeting urgency (normal/urgent)
+                    4. Meeting urgency (normal/urgent). Properly identify terms like urgent, URGENT, do or die, IMP, important, ASAP, asap, and other variations which show that it is urgent and mark "urgent". For other cases mark as "normal"
                     
                     If participant names are given without email domains, append @amd.com
-                    Return ONLY valid JSON with keys: 'participants', 'duration_mins', 'time_constraints', 'urgency'
+                    STRICTLY Return ONLY valid JSON with keys: 'participants', 'duration_mins', 'time_constraints', 'urgency'
                     
                     Email: {email_content}
                     """
